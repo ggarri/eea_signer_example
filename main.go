@@ -208,19 +208,19 @@ func main() {
 	txWithNonZeroGas := NewTransaction(txValue, txGasPrice, "900000", txData, txNonce, txToAddr)
 	
 	address := crypto.PubkeyToAddress(privKey.PublicKey)
-	log.Println("Signing transaction with address:\t", address)
+	log.Println("Public address of signer:\t", address)
 	
 	signedTxWithZeroGas, err := SignTransaction(privKey, txWithZeroGas, privTxParams, chainID)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Println("Raw signed tx data (Zero gas limit):\t", signedTxWithZeroGas)
+	log.Println("Signed TxData (Zero Gas Gas):\t", signedTxWithZeroGas)
 	
 	signedTxWithNonZeroGas, err := SignTransaction(privKey, txWithNonZeroGas, privTxParams, chainID)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Println("Raw signed tx data (Zero gas limit):\t", signedTxWithNonZeroGas)
+	log.Println("Signed TxData (Non-Zero Gas):\t", signedTxWithNonZeroGas)
 	
 	log.Println("execution completed")
 }
